@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
-const validUsername = 'testuser';
-const validPassword = 'password123';
+const jwt = require("jsonwebtoken");
+const validUsername = "testuser";
+const validPassword = "password123";
 
 const authenticate = (req, res, next) => {
   const { username, password } = req.body;
@@ -10,58 +10,57 @@ const authenticate = (req, res, next) => {
     next();
   } else {
     // Authentication failed, send an error response
-    console.log("auth failed")
+    console.log("auth failed");
     res.status(401).json({
-      message: 'Invalid credentials' 
-      });
+      message: "Invalid credentials",
+    });
   }
 };
 
-export{ authenticate}
-
+export { authenticate };
 
 // Secret key for signing JWT
-const SECRET_KEY = 'mysecret123';
+const SECRET_KEY = "mysecret123";
 
 // Dummy user (for demo)
 const user = {
   id: 1,
-  username: 'kamal',
-  password: '1234'
+  username: "kamal",
+  password: "1234",
 };
 
 // ----------------- LOGIN ROUTE -----------------
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   // Check credentials
   if (username === user.username && password === user.password) {
     // Generate JWT
     const token = jwt.sign(
-      { userId: user.id, username: user.username }, 
-      SECRET_KEY, 
-      { expiresIn: '1h' }
+      { userId: user.id, username: user.username },
+      SECRET_KEY,
+      { expiresIn: "1h" }
     );
 
     res.json({ token });
   } else {
-    res.status(401).json({ message: 'Invalid credentials' });
+    res.status(401).json({ message: "Invalid credentials" });
   }
 });
 
 // ----------------- PROTECTED ROUTE -----------------
-app.get('/protected', (req, res) => {
-  const authHeader = req.headers['authorization'];
+app.get("/protected", (req, res) => {
+  const authHeader = req.headers["authorization"];
 
-  if (!authHeader) return res.status(401).json({ message: 'No token provided' });
+  if (!authHeader)
+    return res.status(401).json({ message: "No token provided" });
 
-  const token = authHeader.split(' ')[1]; // Bearer <token>
+  const token = authHeader.split(" ")[1]; // Bearer <token>
 
   try {
     const decoded = jwt.verify(token, SECRET_KEY); // verify token
-    res.json({ message: 'Protected data', user: decoded });
+    res.json({ message: "Protected data", user: decoded });
   } catch (err) {
-    res.status(401).json({ message: 'Invalid or expired token' });
+    res.status(401).json({ message: "Invalid or expired token" });
   }
 });
-

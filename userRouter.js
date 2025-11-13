@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import { userAdd, userEdit} from './userFunction.js';
-import { authenticate } from './auth.js';
+import { Router } from "express";
+import { userAdd, userEdit } from "./userFunction.js";
+import { authenticate } from "./auth.js";
 
 const userRouter = Router();
 
-userRouter.get('/add', authenticate,userAdd)
+userRouter.get("/add", authenticate, userAdd);
 
-userRouter.post('/edit',authenticate, userEdit)
+userRouter.post("/edit", authenticate, userEdit);
 
-export { userRouter};
+export { userRouter };

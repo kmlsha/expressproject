@@ -1,8 +1,7 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-export default port
-
+export default port;
