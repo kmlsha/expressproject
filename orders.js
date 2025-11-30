@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { orderView } from "./userFunction.js";
+import { orderAdd, orderEdit, orderView } from "./orderFunction.js";
 import { authenticate } from "./auth.js";
 
 const orderRouter = Router();
 
-orderRouter.get("/add", authenticate, orderView);
+orderRouter.post("/add", authenticate, orderAdd);
+orderRouter.post("/edit", authenticate, orderEdit);
+orderRouter.get("/view", authenticate, orderView);
 
 export { orderRouter };

@@ -1,4 +1,5 @@
-const jwt = require("jsonwebtoken");
+// import app from "./app.js";
+import jwt from "jsonwebtoken";
 const validUsername = "testuser";
 const validPassword = "password123";
 
@@ -30,37 +31,37 @@ const user = {
 };
 
 // ----------------- LOGIN ROUTE -----------------
-app.post("/login", (req, res) => {
-  const { username, password } = req.body;
+// app.post("/login", (req, res) => {
+//   const { username, password } = req.body;
 
-  // Check credentials
-  if (username === user.username && password === user.password) {
-    // Generate JWT
-    const token = jwt.sign(
-      { userId: user.id, username: user.username },
-      SECRET_KEY,
-      { expiresIn: "1h" }
-    );
+//   // Check credentials
+//   if (username === user.username && password === user.password) {
+//     // Generate JWT
+//     const token = jwt.sign(
+//       { userId: user.id, username: user.username },
+//       SECRET_KEY,
+//       { expiresIn: "1h" }
+//     );
 
-    res.json({ token });
-  } else {
-    res.status(401).json({ message: "Invalid credentials" });
-  }
-});
+//     res.json({ token });
+//   } else {
+//     res.status(401).json({ message: "Invalid credentials" });
+//   }
+// });
 
-// ----------------- PROTECTED ROUTE -----------------
-app.get("/protected", (req, res) => {
-  const authHeader = req.headers["authorization"];
+// // ----------------- PROTECTED ROUTE -----------------
+// app.get("/protected", (req, res) => {
+//   const authHeader = req.headers["authorization"];
 
-  if (!authHeader)
-    return res.status(401).json({ message: "No token provided" });
+//   if (!authHeader)
+//     return res.status(401).json({ message: "No token provided" });
 
-  const token = authHeader.split(" ")[1]; // Bearer <token>
+//   const token = authHeader.split(" ")[1]; // Bearer <token>
 
-  try {
-    const decoded = jwt.verify(token, SECRET_KEY); // verify token
-    res.json({ message: "Protected data", user: decoded });
-  } catch (err) {
-    res.status(401).json({ message: "Invalid or expired token" });
-  }
-});
+//   try {
+//     const decoded = jwt.verify(token, SECRET_KEY); // verify token
+//     res.json({ message: "Protected data", user: decoded });
+//   } catch (err) {
+//     res.status(401).json({ message: "Invalid or expired token" });
+//   }
+// });

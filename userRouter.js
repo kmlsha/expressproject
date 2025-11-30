@@ -4,7 +4,7 @@ import { authenticate } from "./auth.js";
 
 const userRouter = Router();
 
-userRouter.get("/add", authenticate, userAdd);
+userRouter.post("/add", authenticate, userAdd);
 
 userRouter.post("/edit", authenticate, userEdit);
 

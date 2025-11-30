@@ -1,7 +1,7 @@
-let userAdd = async (req, res) => {
+let orderAdd = async (req, res) => {
   return res.send({
     status: 0,
-    data: "user added",
+    data: "order added",
   });
 };
 
@@ -12,11 +12,11 @@ let orderView = async (req, res) => {
   });
 };
 
-let userEdit = async (req, res) => {
+let orderEdit = async (req, res) => {
   return res.send({
     status: 0,
-    data: "user edited",
+    data: "order edited",
   });
 };
 
-export { userAdd, userEdit, orderView };
+export { orderAdd, orderEdit, orderView };
