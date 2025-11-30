@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { userAdd, userEdit } from "./userFunction.js";
-import { authenticate } from "./auth.js";
+import { authenticate } from "../auth.js";
 
 const userRouter = Router();
 

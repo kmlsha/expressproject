@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { orderAdd, orderEdit, orderView } from "./orderFunction.js";
-import { authenticate } from "./auth.js";
+import { authenticate } from "../auth.js";
 
 const orderRouter = Router();
 
