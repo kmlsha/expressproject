@@ -4,6 +4,6 @@ import { authenticate } from "./auth.js";
 
 const orderreturnRouter = Router();
 
-orderreturnRouter.get("/refund", authenticate, refundView);
+orderreturnRouter.get("/refund/status", authenticate, refundView);
 
 export { orderreturnRouter };
