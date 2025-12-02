@@ -9,7 +9,7 @@ const loginFn = (req, res, next) => {
   // Check if the credentials match
   if (username === validUsername && password === validPassword) {
     // Create a JWT token
-    const token = jwt.sign({ username }, secretKey, { expiresIn: "1h" });
+    const token = jwt.sign({ username }, secretKey, { expiresIn: "30mins" });
 
     // Send token to client
     return res.json({ token });

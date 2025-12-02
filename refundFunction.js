@@ -1,12 +1,12 @@
 let refundView = async (req, res) => {
-  let vla = "";
-  if (req.query.data == "ss") {
-    vla = "kk";
+  let orderId = req.query.orderId;
+
+  if (orderId) {
   }
 
   return res.send({
     status: 0,
-    data: vla,
+    data: null,
   });
 };
 
