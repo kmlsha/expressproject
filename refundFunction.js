@@ -1,4 +1,4 @@
-let refundView = async (req, res) => {
+let refundStatus = async (req, res) => {
   let orderId = req.query.orderId;
 
   if (orderId) {
@@ -10,4 +10,4 @@ let refundView = async (req, res) => {
   });
 };
 
-export { refundView };
+export { refundStatus };

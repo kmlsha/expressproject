@@ -1,34 +1,40 @@
-import dbClient from "../mongodb.js";
+import { connect } from "../mongodb.js";
 
 let userAdd = async (req, res) => {
+  const db = await connect();
+  const response = await db.collection("movies").insertOne({
+    title: "The Great Train Robberys",
+    year: 1903,
+  });
   return res.send({
     status: 0,
-    data: "user added",
+    txt: "user added",
+    data: response,
   });
 };
 
 let orderView = async (req, res) => {
+  const db = await connect();
+  const response = await db.collection("movies").findOne({
+    title: "The Great Train Robberys",
+    year: 1903,
+  });
+
   return res.send({
     status: 0,
-    data: "order viewed",
+    data: response,
   });
 };
 
 let userEdit = async (req, res) => {
-  let kk = null;
-  try {
-    await dbClient.connect(); // connects using MONGODB_URI or default
-    kk = await dbClient.getDb().collection("movies").findOne({
-      runtime: 11,
-    });
-  } catch (error) {
-    console.error("Error in userEdit:", error);
-  }
+  const db = await connect();
+  const response = await db.collection("movies").updateOne({
+    title: "The Great Train Robbery",
+  });
 
   return res.send({
     status: 0,
-    data: "user edited",
-    datas: kk,
+    data: response,
   });
 };
 

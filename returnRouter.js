@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { refundView } from "./refundFunction.js";
 import { authenticate } from "./auth.js";
+import { refundStatus } from "./refundFunction.js";
 
-const orderreturnRouter = Router();
+const orderReturnRouter = Router();
 
-orderreturnRouter.get("/refund/status", authenticate, refundView);
+orderReturnRouter.get("/refund", authenticate, refundStatus);
 
-export { orderreturnRouter };
+export { orderReturnRouter };
 
 // t9EZaiwC1oPpqvZL

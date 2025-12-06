@@ -1,7 +1,7 @@
 import express from "express";
 import { userRouter } from "./user/userRouter.js";
 import { orderRouter } from "./order/orderRouter.js";
-import { orderreturnRouter } from "./returnRouter.js";
+import { orderReturnRouter } from "./returnRouter.js";
 import { loginFn } from "./auth.js";
 
 const router = express.Router();
@@ -10,6 +10,6 @@ const router = express.Router();
 router.use("/v2/login", loginFn);
 router.use("/v2/user", userRouter);
 router.use("/v2/order", orderRouter);
-router.use("/v2/return", orderreturnRouter);
+router.use("/v2/return", orderReturnRouter);
 
 export { router };
