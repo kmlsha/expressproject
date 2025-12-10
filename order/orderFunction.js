@@ -2,6 +2,12 @@ import { connect } from "../mongodb.js";
 
 let orderAdd = async (req, res) => {
   let { item_name } = req.body;
+  if (!item_name) {
+    return res.send({
+      status: 1,
+      txt: "item name is required",
+    });
+  }
   const db = await connect();
   const response = await db.collection("orders").insertOne({
     item_name,
