@@ -1,10 +1,11 @@
 import { connect } from "../mongodb.js";
 
 let orderAdd = async (req, res) => {
+  let { item_name } = req.body;
   const db = await connect();
-  const response = await db.collection("movies").insertOne({
-    title: "The Great Train Robberys",
-    year: 1903,
+  const response = await db.collection("orders").insertOne({
+    item_name,
+    status: "active",
   });
   return res.send({
     status: 0,
@@ -14,10 +15,10 @@ let orderAdd = async (req, res) => {
 };
 
 let orderView = async (req, res) => {
+  let { item_name } = req.body;
   const db = await connect();
-  const response = await db.collection("movies").findOne({
-    title: "The Great Train Robberys",
-    year: 1903,
+  const response = await db.collection("orders").findOne({
+    item_name,
   });
 
   return res.send({
@@ -28,8 +29,9 @@ let orderView = async (req, res) => {
 
 let orderEdit = async (req, res) => {
   const db = await connect();
-  const response = await db.collection("movies").updateOne({
-    title: "The Great Train Robbery",
+  const response = await db.collection("orders").updateOne({
+    item_name: req.body.item_name,
+    status: "inactive",
   });
 
   return res.send({
