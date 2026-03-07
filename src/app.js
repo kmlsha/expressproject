@@ -1,6 +1,6 @@
 import express from "express";
-import { router } from "./src/router/router.js";
-import port from "./src/index.js";
+import { router } from "./router/router.js";
+import port from "./index.js";
 
 const app = express();
 
