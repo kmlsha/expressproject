@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { authenticate } from "./auth.js";
+import { authenticate } from "../auth.js";
 import { refundStatus } from "./refundFunction.js";
 
 const orderReturnRouter = Router();

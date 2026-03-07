@@ -1,4 +1,4 @@
-import { connect } from "../mongodb.js";
+import { connect } from "../db/mongodb.js";
 
 let userAdd = async (req, res) => {
   let { name, email } = req.body;
