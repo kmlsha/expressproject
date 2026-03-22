@@ -5,9 +5,7 @@ dotenv.config();
 const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = process.env.MONGODB_DB;
 
-console.log("Using MongoDB URI:", process.env.MONGODB_URI);
-console.log("Using MongoDB URI:ss", MONGODB_URI);
-console.log("Using MongoDB", DB_NAME);
+console.log("Using MongoDB database:", DB_NAME);
 
 let client;
 let db;
